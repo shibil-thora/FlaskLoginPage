@@ -5,7 +5,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index(): 
-    return render_template('home.html')  
+    data = {
+        'message': 'hi akshay!'
+    }
+    return jsonify(data) 
 
 
 @app.route('/login_user', methods=['GET', 'POST'])
