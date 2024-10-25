@@ -2,10 +2,10 @@ from flask import Flask, jsonify, redirect
 
 app = Flask(__name__)
 
-@app.route('/app1')
-def index():
+@app.route('/app1/<model>')
+def indexd(model):
     data = {
-        'message': 'hi app1'
+        'message': f'hi app1, {model}'
     }
     return jsonify(data)
 
