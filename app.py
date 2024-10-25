@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, redirect
 
 app = Flask(__name__) 
-server_url = '127.0.0.1'
+server_url = '3.110.212.33'
 
 @app.route('/')
 def index():
