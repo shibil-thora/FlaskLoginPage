@@ -1,28 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, jsonify, redirect
 
 app = Flask(__name__) 
-
+server_url = '127.0.0.1'
 
 @app.route('/')
-def index(): 
+def index():
     data = {
-        'message': 'hi akshay!'
+        'message': 'hi app'
     }
-    return jsonify(data) 
+    return jsonify(data)
 
+@app.route('/app1')
+def index1():
+    return redirect(f"http://{server_url}:8001/app1")
 
-@app.route('/login_user', methods=['GET', 'POST'])
-def login_user(): 
-    if request.method == 'GET':
-        usr = request.args.get('usr')
-        pwd = request.args.get('pwd')
-        print('get request', usr, pwd)
-    
-    if request.method == 'POST': 
-        print('post request')
-
-    # login logic 
-    response_data = {
-        'status': 'nice'
-    }
-    return jsonify(response_data)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8000, debug=True)
